@@ -77,7 +77,7 @@ module.exports = (plugins, opts) => {
 
 		const use = plugins || getDefaultPlugins();
 
-		imagemin.buffer(file.contents, {use})
+		imagemin.buffer(file.contents, Object.assign(opts, {use}))
 			.then(data => {
 				const originalSize = file.contents.length;
 				const optimizedSize = data.length;
